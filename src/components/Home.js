@@ -3,9 +3,10 @@ import { NavLink } from 'react-router-dom'
 import { useQuery } from 'react-query'
 import axios from 'axios'
 
+import CreatePost from './CreatePost'
+
 const getPosts = async () => {
     const { data } = await axios.get('https://jsonplaceholder.typicode.com/posts')
-    console.log(data)
     return data
 }
 
@@ -21,8 +22,10 @@ function Home() {
 
     return (
         <div className='container'>
-            <h1>Posts</h1>
-            { data &&
+            <CreatePost />
+            <h1>Posts List</h1>
+            {
+                data &&
                 <ul>
                     {
                         data
@@ -36,7 +39,7 @@ function Home() {
                 </ul>
             }
             { isFetching && <p>updating data...</p>}
-        </div>
+        </div >
     );
 }
 

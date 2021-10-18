@@ -1,5 +1,5 @@
 import React from 'react'
-// import { NavLink } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 import { useQuery } from 'react-query'
 import axios from 'axios'
 
@@ -29,13 +29,13 @@ function Home() {
                             .slice(0, 20)
                             .map((post) => (
                                 <li key={`post-${post.id}`}>
-                                    {post.title}
+                                    <NavLink to={`/post/${post.id}`}>{post.title}</NavLink>
                                 </li>
                             ))
                     }
                 </ul>
             }
-            { isFetching && <p>updating...</p>}
+            { isFetching && <p>updating data...</p>}
         </div>
     );
 }
